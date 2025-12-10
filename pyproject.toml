@@ -1,0 +1,11 @@
+[project]
+name = "ai-lite-llm"
+version = "0.1.0"
+description = "FastAPI app that uses lite-llm"
+dependencies = [
+    "fastapi>=0.124.0",
+    "litellm>=1.80.9",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.1",
+    "uvicorn>=0.38.0",
+]

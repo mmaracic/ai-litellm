@@ -1,0 +1,22 @@
+meta {
+  name: Query llm
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/query-llm
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "query": "What is the capital of Australia?"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
