@@ -6,6 +6,10 @@ model.
 ## Enviroment Variables
 - `OPENROUTER_API_KEY`: API key for OpenRouter service.
 
+## Functionality
+
+LiteLLM and router both have synchronous and asynchronous APIs (completion vs acompletion).
+
 ## Run
 
 ```bash

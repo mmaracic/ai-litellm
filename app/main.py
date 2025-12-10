@@ -13,7 +13,10 @@ async def lifespan(app: FastAPI):
     """FastAPI lifespan: initialize LLM on startup and clean up on shutdown."""
     try:
         load_dotenv()
-        llm_client: LLMClient = LLMClient(os.getenv("OPENROUTER_API_KEY", ""))
+        llm_client: LLMClient = LLMClient(
+            api_key=os.getenv("OPENROUTER_API_KEY", ""),
+            model="openrouter/openai/gpt-5-nano",
+        )
         app.state.llm_client = llm_client
         yield
     finally:
@@ -31,9 +34,7 @@ async def query_llm(request: QueryRequest) -> QueryResponse:
     """
     try:
         llm_client: LLMClient = app.state.llm_client
-        response_text: str = llm_client.generate(
-            "openrouter/openai/gpt-5-nano", request.query
-        )
+        response_text: str = llm_client.generate(request.query)
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
